@@ -14,11 +14,17 @@ list.sort(function() {
 });
 
 const content = document.getElementById("content");
+
 list.forEach(img => {
-  let flipContainer = document.createElement("div");
-  flipContainer.classList.add("flip-container");
+  const blank = document.createElement("div");
+  blank.classList.add("front");
+  let flipper = document.createElement("div");
+  flipper.classList.add("flipper");
+  flipper.addEventListener("click", () => flipper.classList.toggle("flip"));
   let image = document.createElement("img");
   image.setAttribute("src", img);
-  flipContainer.appendChild(image);
-  content.appendChild(flipContainer);
+  image.classList.add("back");
+  flipper.appendChild(image);
+  flipper.appendChild(blank);
+  content.appendChild(flipper);
 });
