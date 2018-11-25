@@ -7,13 +7,20 @@ content {
   justify-content: center;
 }
 
-img {
+.flip-container {
   border: 1px black solid;
   width: 24%;
   margin: 0.2% 0.2%;
   max-height: 70px;
+  text-align: center;
 }
-
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+img:hover {
+  transform: rotateY(360deg);
+}
 h1 {
   text-align: center;
   font-size: 20px;
@@ -23,12 +30,12 @@ h1 {
 @media only screen and (min-width: 750px) {
   h1 {
     font-size: 40px;
-    margin-bottom: 20px;g 
+    margin-bottom: 20px;
   }
   content {
     max-width: 800px;
   }
-  img {
+  .flip-container {
     max-width: 180px;
     max-height: 180px;
   }

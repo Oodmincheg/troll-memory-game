@@ -13,10 +13,12 @@ list.sort(function() {
   return 0.5 - Math.random();
 });
 
-
 const content = document.getElementById("content");
 list.forEach(img => {
+  let flipContainer = document.createElement("div");
+  flipContainer.classList.add("flip-container");
   let image = document.createElement("img");
   image.setAttribute("src", img);
-  content.appendChild(image);
+  flipContainer.appendChild(image);
+  content.appendChild(flipContainer);
 });
