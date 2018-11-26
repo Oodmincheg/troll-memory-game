@@ -13,27 +13,43 @@ list.sort(function() {
   return 0.5 - Math.random();
 });
 let secondClick = false;
-let previousElement;
-const flip = e => {
-  e.currentTarget.classList.toggle("flip");
+let previousFlipper, previousImage;
+
+//funtcion to flip one or more fliper containers
+const flip = function() {
+  [...arguments].forEach(flipper => {
+    flipper.classList.toggle("flip");
+  });
 };
 
-const move = e => {
-  flip(e);
-  if (secondClick) {
-    let currentCard = e.currentTarget.querySelector("img");
-    if (currentCard.getAttribute("src") === previousCard.getAttribute("src")) {
-      currentCard.classList.add("hidden");
-      previousCard.classList.add("hidden");
-      second = false;
+const move = event => {
+  const currentFlipper = event.currentTarget;
+  const currentImage = event.currentTarget
+    .querySelector("img")
+    .getAttribute("src");
+  //check the click on the same card
+  if (currentFlipper != previousFlipper) {
+    flip(currentFlipper);
+    if (secondClick) {
+      if (currentImage != previousImage) {
+        setTimeout(() => {
+          flip(previousFlipper, currentFlipper);
+        }, 1500);
+        secondClick = false;
+      } else {
+        currentFlipper.classList.add("hidden");
+        previousFlipper.classList.add("hidden");
+      }
+    } else {
+      console.clear();
+      previousFlipper = currentFlipper;
+      previousImage = currentImage;
+      secondClick = true;
     }
-  } else {
-    previousCard = e.currentTarget.querySelector("img");
-    secondClick = true;
   }
 };
-const content = document.getElementById("content");
 
+const content = document.getElementById("content");
 list.forEach(img => {
   const blank = document.createElement("div");
   blank.classList.add("front");

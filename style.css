@@ -6,7 +6,7 @@ content {
   justify-content: center;
 }
 .hidden {
-  display: none;
+  border: none;
 }
 .flipper {
   border: 1px black solid;
