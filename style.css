@@ -5,7 +5,9 @@ content {
   flex-wrap: wrap;
   justify-content: center;
 }
-
+.hidden {
+  display: none;
+}
 .flipper {
   border: 1px black solid;
   width: 24%;
