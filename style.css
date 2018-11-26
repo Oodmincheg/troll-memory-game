@@ -5,8 +5,11 @@ content {
   flex-wrap: wrap;
   justify-content: center;
 }
-.hidden {
-  border: none;
+.flipper.hidden {
+  border: white;
+}
+.flipper.hidden img {
+  display: none;
 }
 .flipper {
   border: 1px black solid;
@@ -25,12 +28,13 @@ img {
 }
 
 h1 {
+  font-family: "Comic Sans MS", cursive, sans-serif;
   text-align: center;
   font-size: 20px;
   margin: auto;
 }
 .flipper {
-  transition: 0.6s;
+  transition: transform 0.6s;
   transform-style: preserve-3d;
 
   position: relative;
@@ -77,16 +81,3 @@ h1 {
     height: 180px;
   }
 }
-/* entire container, keeps perspective */
-/*.flip-container {
-  perspective: 0;
-}*/
-/* flip the pane when hovered */
-/*.flip-container:hover .flipper,
-.flip-container.hover .flipper {
-  transform: rotateY(180deg);
-}*/
-
-/*.flip-container,*/
-
-/* flip speed goes here */
