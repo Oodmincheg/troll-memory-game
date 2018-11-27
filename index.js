@@ -22,6 +22,7 @@ let remainingCards,
   performNextMoveFlag,
   previousFlipper,
   currentFlipper,
+  currentImage,
   previousImage;
 
 //funtcion to flip one or more fliper containers
@@ -56,10 +57,11 @@ const removeMatches = () => {
 
 //function that handle moves(clicks on the cards)
 const move = event => {
-  currentFlipper = event.currentTarget;
-  // prettier-ignore
-  const currentImage = currentFlipper.querySelector("img").getAttribute("src");
-
+  if (performNextMoveFlag) {
+    currentFlipper = event.currentTarget;
+    // prettier-ignore
+    currentImage = currentFlipper.querySelector("img").getAttribute("src");
+  }
   //check the click on the same card, click on not hidden element and possibility of opening cards
   if (
     currentFlipper != previousFlipper &&
