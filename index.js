@@ -85,6 +85,19 @@ const move = event => {
   }
 };
 
+const createCard = img => {
+  let card = document.createElement("div");
+  card.classList.add("flipper");
+  card.addEventListener("mousedown", move);
+  let blankSide = document.createElement("div");
+  blankSide.classList.add("front");
+  let imageSide = document.createElement("img");
+  imageSide.setAttribute("src", img);
+  imageSide.classList.add("back");
+  card.append(imageSide, blankSide);
+  return card;
+};
+
 const newGame = () => {
   //shuffle array of cards
   list.sort(() => {
@@ -99,27 +112,7 @@ const newGame = () => {
 
   //render our cards on the page(back sides)
   list.forEach(img => {
-    //create blank side of the card
-    const blank = document.createElement("div");
-    blank.classList.add("front");
-
-    //create our flipper container
-    let flipper = document.createElement("div");
-    flipper.classList.add("flipper");
-
-    //add event listnee to our flipper container
-    flipper.addEventListener("mousedown", move);
-
-    //create image on back side of our card
-    let image = document.createElement("img");
-    image.setAttribute("src", img);
-    image.classList.add("back");
-
-    //add back and front of our card to the flipper
-    flipper.append(image, blank);
-
-    //add aour flipper to the page
-    GAME_BOARD.appendChild(flipper);
+    GAME_BOARD.appendChild(createCard(img));
   });
 };
 
