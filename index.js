@@ -48,11 +48,13 @@ const performNextMove = () => {
 // hide matches from page, and count how many cards are left in the game
 const removeMatches = (...args) => {
   args.forEach(card => card.classList.add("hidden"));
+  remainingCards -= 2;
   performNextMove();
 };
 
 //function that handle moves(clicks on the cards)
 const move = event => {
+  event.preventDefault();
   const currentFlipper = event.currentTarget;
   // prettier-ignore
   const currentImage = currentFlipper.querySelector("img").getAttribute("src");
