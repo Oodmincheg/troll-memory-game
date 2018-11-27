@@ -2,13 +2,13 @@
 //array of our cards
 let list = [
   "./img/sad.png",
-  "./img/dad.png"
-  /*"./img/indiffirent.png",
+  "./img/dad.png",
+  "./img/indiffirent.png",
   "./img/pfff.png",
   "./img/troll.png",
   "./img/rage.png",
   "./img/yellow.png",
-  "./img/scream.png"*/
+  "./img/scream.png"
 ];
 //double our cards in the array
 list = list.concat(list);
@@ -61,7 +61,7 @@ const move = event => {
     currentFlipper = event.currentTarget;
     // prettier-ignore
     currentImage = currentFlipper.querySelector("img").getAttribute("src");
-  }
+  } else return;
   //check the click on the same card, click on not hidden element and possibility of opening cards
   if (
     currentFlipper != previousFlipper &&
